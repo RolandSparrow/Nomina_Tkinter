@@ -1,6 +1,6 @@
-from distutils.command import config
 from tkinter import ttk
 from tkinter import *
+from client.app import bar_menu
 
 
 import sqlite3
@@ -15,6 +15,8 @@ class Empleado:
         # Initializations 
         self.wind = window
         self.wind.title('register employees')
+        self.wind.iconbitmap('img/icon.ico') 
+        bar_menu(self.wind)
 
         # Creating a Frame Container 
         frame = LabelFrame(self.wind, text = 'Register new employee')
@@ -116,7 +118,7 @@ class Empleado:
     def delete_employee(self):
         self.message['text'] = ''
         try:
-           self.tree.item(self.tree.selection())['text'][0]
+            self.tree.item(self.tree.selection())['text'][0]
         except IndexError as e:
             self.message['text'] = 'Please select a Record'
             return
@@ -165,7 +167,7 @@ class Empleado:
         Label(self.edit_wind, text = 'New Id:').grid(row = 5, column = 1)
         new_id = Entry(self.edit_wind)
         new_id.grid(row = 5, column = 2)
-                              
+                                
         # Old Salary 
         Label(self.edit_wind, text = 'Old Salary:').grid(row = 6, column = 1)
         Entry(self.edit_wind, textvariable = StringVar(self.edit_wind, value = salary), state = 'readonly').grid(row = 6, column = 2)
